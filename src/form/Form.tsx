@@ -29,9 +29,7 @@ export const Form = () => {
           id="tel"
           autoComplete="tel"
           {...register("tel")}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            handlePhoneNumber(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneNumber(e.target.value)}
         />
       </label>
       <button>送信</button>
@@ -40,8 +38,6 @@ export const Form = () => {
 };
 
 const TheForm = styled.form`
-  text-align: left;
-
   & label {
     width: 100%;
     line-height: 1.5;
