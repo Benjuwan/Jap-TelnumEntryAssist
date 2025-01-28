@@ -35,4 +35,4 @@
 - styled-components@6.1.13
 - typescript-eslint@8.8.1
 - typescript@5.6.3
-- vite@5.4.8
+- vite@5.4.14
