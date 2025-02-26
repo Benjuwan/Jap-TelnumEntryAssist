@@ -3,6 +3,10 @@ import { ChangeEvent } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAdjustPhoneNumber } from "./hooks/useAdjustPhoneNumber";
 
+type TheFormType = {
+  tel: string;
+};
+
 export const Form = () => {
   const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
@@ -10,7 +14,7 @@ export const Form = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<TheFormType> = (data) => {
     console.log(data);
   };
 

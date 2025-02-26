@@ -24,7 +24,7 @@
 - @eslint/js@9.12.0
 - @types/react-dom@18.3.1
 - @types/react@18.3.11
-- @vitejs/plugin-react-swc@3.7.1
+- @vitejs/plugin-react-swc@3.8.0
 - eslint-plugin-react-hooks@5.1.0-rc-fb9a90fa48-20240614
 - eslint-plugin-react-refresh@0.4.12
 - eslint@9.12.0
@@ -35,4 +35,4 @@
 - styled-components@6.1.13
 - typescript-eslint@8.8.1
 - typescript@5.6.3
-- vite@5.4.14
+- vite@6.2.0
