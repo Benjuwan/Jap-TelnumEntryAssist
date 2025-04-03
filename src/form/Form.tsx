@@ -1,4 +1,3 @@
-import { styled } from "styled-components";
 import { ChangeEvent } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAdjustPhoneNumber } from "./hooks/useAdjustPhoneNumber";
@@ -25,53 +24,21 @@ export const Form = () => {
   };
 
   return (
-    <TheForm name="contact" onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        <span>電話番号</span>
-        <input
-          type="tel"
-          id="tel"
-          autoComplete="tel"
-          {...register("tel")}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneNumber(e.target.value)}
-        />
-      </label>
-      <button>送信</button>
-    </TheForm>
+    <div className="font-sans max-w-[320px] my-[5em] mx-auto">
+      <form name="contact" onSubmit={handleSubmit(onSubmit)}>
+        <label className="w-full leading-[1.5] text-[16px]">
+          <span className="block tracking-[0.25em] border-l-[4px] border-[#333] pl-[0.5em] mb-[0.5em]">電話番号</span>
+          <input
+            type="tel"
+            id="tel"
+            className="w-full rounded border border-[#333] pt-[0.5em] pr-[0] pb-[0.5em] pl-[0.5em]"
+            autoComplete="tel"
+            {...register("tel")}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneNumber(e.target.value)}
+          />
+        </label>
+        <button className="block text-[14px] cursor-pointer appearance-none rounded border border-[#333] w-fit my-[1em] mx-auto py-[0.5em] px-[2em] tracking-[0.25em]">送信<br />（特に何もなし）</button>
+      </form>
+    </div>
   );
 };
-
-const TheForm = styled.form`
-  & label {
-    width: 100%;
-    line-height: 1.5;
-    font-size: 16px;
-    
-    & span {
-      letter-spacing: 0.25em;
-      display: block;
-      border-left: 4px solid #333;
-      padding-left: 0.5em;
-      margin-bottom: 0.5em;
-    }
-
-    & input {
-      width: 100%;
-      border-radius: 4px;
-      border: 1px solid #333;
-      padding: 0.5em 0 0.5em 0.5em;
-    }
-  }
-  
-  & button {
-    cursor: pointer;
-    appearance: none;;
-    border-radius: 4px;
-    border: 1px solid #333;
-    display: block;
-    width: fit-content;
-    margin: 1em auto;
-    padding: .5em 2em;
-    letter-spacing: 0.25em;
-  }
-`;
