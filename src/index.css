@@ -1,9 +1,1 @@
-* {
-  box-sizing: border-box;
-}
-
-.App {
-  font-family: sans-serif;
-  max-width: 320px;
-  margin: 5em auto;
-}
+@import "tailwindcss";
