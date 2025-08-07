@@ -4,7 +4,7 @@ type adjustShapePhoneNumber_position = {
   beginDigit: number; // 先頭の桁数
   middleDigit: number; // 中間の桁数
   noHyphenSumTelStr: number; // 入力文字数（ハイフンなしの電話番号文字列の合計）
-}
+};
 
 /* 各電話番号別の分類（桁数のチェックと分類）*/
 const _checkDigitsClassification: (telStr: string, delimitPoint: number) => string = (
