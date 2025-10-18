@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/form/form.tsx","./src/form/alltelstartdigits.ts","./src/form/hooks/useadjustphonenumber.ts"],"version":"5.9.3"}

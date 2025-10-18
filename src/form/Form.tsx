@@ -14,7 +14,7 @@ export const Form = () => {
   });
 
   const onSubmit: SubmitHandler<TheFormType> = (data) => {
-    console.log(data);
+    console.warn(data);
   };
 
   const { adjustPhoneNumber } = useAdjustPhoneNumber();
