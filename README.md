@@ -24,7 +24,7 @@
 
 ## 技術構成
 - @eslint/js@9.38.0
-- @tailwindcss/vite@4.1.14
+- @tailwindcss/vite@4.1.15
 - @types/react-dom@19.2.2
 - @types/react@19.2.2
 - @vitejs/plugin-react-swc@4.1.0
@@ -36,7 +36,7 @@
 - react-dom@19.2.0
 - react-hook-form@7.65.0
 - react@19.2.0
-- tailwindcss@4.1.14
-- typescript-eslint@8.46.1
+- tailwindcss@4.1.15
+- typescript-eslint@8.46.2
 - typescript@5.9.3
-- vite@7.1.10
+- vite@7.1.11
