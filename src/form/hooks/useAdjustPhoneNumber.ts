@@ -36,21 +36,24 @@ const _adjustShapePhoneNumber: (telnumStr: string, position: adjustShapePhoneNum
  * falsePosition: adjustShapePhoneNumber_position,
  * checkLineByEntryLength: 確認ダイアログ表示判定のしきい値（入力文字数）
 */
-const _specificPhoneNumber: (checkDigit: string, targetAreaType: string, specificPhoneNum: string, telnumStr: string, truePosition: adjustShapePhoneNumber_position, falsePosition: adjustShapePhoneNumber_position, checkLineByEntryLength: number) => string | undefined = (
+const _specificPhoneNumber = (
   checkDigit: string,
   targetAreaType: string,
-  specificPhoneNum: string,
+  specificPhoneNum: string | string[],
   telnumStr: string,
   truePosition: adjustShapePhoneNumber_position,
   falsePosition: adjustShapePhoneNumber_position,
   checkLineByEntryLength: number
-) => {
+): string | undefined => {
   const checkAndSelectPhoneNumber: boolean = telnumStr.length > checkLineByEntryLength;
 
   const pattern_true = _adjustShapePhoneNumber(telnumStr, truePosition);
   const pattern_false = _adjustShapePhoneNumber(telnumStr, falsePosition);
 
-  if (checkDigit === specificPhoneNum && checkAndSelectPhoneNumber) {
+  const isAry_specificPhoneNum: boolean = Array.isArray(specificPhoneNum);
+  const isAlertOn: boolean = isAry_specificPhoneNum ? specificPhoneNum.includes(checkDigit) : checkDigit === specificPhoneNum;
+
+  if (isAlertOn && checkAndSelectPhoneNumber) {
     const result = confirm(`${targetAreaType}の市外局番{${specificPhoneNum}}には以下の表記が存在します。今回はどちらに該当しますか？\n{${pattern_true}}の場合は「OK」を、\n{${pattern_false}}の場合は「キャンセル」を選択してください。`);
 
     if (result) return pattern_true;
@@ -72,12 +75,15 @@ export const useAdjustPhoneNumber = () => {
     /* フリーダイヤル・ナビダイヤル（※{0800}がモバイル{080}処理になるのを回避するため先に書いておく）*/
     const checkDigit_4: string = _checkDigitsClassification(restoreFormattedNumber, 4);
     const isNaviOrFreedial: boolean = [...freedial, ...navidial].includes(checkDigit_4);
+
     if (isNaviOrFreedial) {
-      if (checkDigit_4 === '0570') {
-        /* ナビダイヤルには {0570-xx-xxxx}, {0570-xxx-xxx} のパターンがある */
+      const multiPaternDial: string[] = ['0120', '0570'];
+
+      if (multiPaternDial.includes(checkDigit_4)) {
+        /* {DDDD-xx-xxxx}, {DDDD-xxx-xxx} のパターンがある */
         const truePosition: adjustShapePhoneNumber_position = { beginDigit: 4, middleDigit: 3, noHyphenSumTelStr: 10 };
         const falsePosition: adjustShapePhoneNumber_position = { beginDigit: 4, middleDigit: 2, noHyphenSumTelStr: 10 };
-        const navidial_specificPhoneNumber: string | undefined = _specificPhoneNumber(checkDigit_4, 'ナビダイヤル', '0570', restoreFormattedNumber, truePosition, falsePosition, 9);
+        const navidial_specificPhoneNumber: string | undefined = _specificPhoneNumber(checkDigit_4, 'ナビダイヤル', multiPaternDial, restoreFormattedNumber, truePosition, falsePosition, 9);
         if (typeof navidial_specificPhoneNumber !== 'undefined') {
           return formattedNumber = navidial_specificPhoneNumber;
         }
@@ -86,12 +92,6 @@ export const useAdjustPhoneNumber = () => {
         const is_0800: boolean = checkDigit_4 === '0800' && restoreFormattedNumber.length >= 11;
         if (is_0800) {
           const position: adjustShapePhoneNumber_position = { beginDigit: 4, middleDigit: 3, noHyphenSumTelStr: 11 };
-          return formattedNumber = _adjustShapePhoneNumber(restoreFormattedNumber, position);
-        }
-
-        const is_0120: boolean = checkDigit_4 === '0120' && restoreFormattedNumber.length >= 10;
-        if (is_0120) {
-          const position: adjustShapePhoneNumber_position = { beginDigit: 4, middleDigit: 3, noHyphenSumTelStr: 10 };
           return formattedNumber = _adjustShapePhoneNumber(restoreFormattedNumber, position);
         }
       }
