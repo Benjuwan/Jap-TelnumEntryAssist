@@ -23,20 +23,20 @@
 入力補助を担うカスタムフック（関数・メソッド）です。
 
 ## 技術構成
-- @eslint/js@9.39.1
-- @tailwindcss/vite@4.1.17
+- @eslint/js@9.39.2
+- @tailwindcss/vite@4.1.18
 - @types/react-dom@19.2.3
 - @types/react@19.2.7
 - @vitejs/plugin-react-swc@4.2.2
 - eslint-plugin-react-hooks@7.0.1
-- eslint-plugin-react-refresh@0.4.24
+- eslint-plugin-react-refresh@0.4.25
 - eslint-plugin-react@7.37.5
-- eslint@9.39.1
+- eslint@9.39.2
 - globals@16.5.0
-- react-dom@19.2.1
+- react-dom@19.2.3
 - react-hook-form@7.68.0
-- react@19.2.1
-- tailwindcss@4.1.17
-- typescript-eslint@8.48.1
+- react@19.2.3
+- tailwindcss@4.1.18
+- typescript-eslint@8.50.0
 - typescript@5.9.3
-- vite@7.2.6
+- vite@7.3.0
