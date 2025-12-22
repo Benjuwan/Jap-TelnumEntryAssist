@@ -29,12 +29,12 @@
 - @types/react@19.2.7
 - @vitejs/plugin-react-swc@4.2.2
 - eslint-plugin-react-hooks@7.0.1
-- eslint-plugin-react-refresh@0.4.25
+- eslint-plugin-react-refresh@0.4.26
 - eslint-plugin-react@7.37.5
 - eslint@9.39.2
 - globals@16.5.0
 - react-dom@19.2.3
-- react-hook-form@7.68.0
+- react-hook-form@7.69.0
 - react@19.2.3
 - tailwindcss@4.1.18
 - typescript-eslint@8.50.0
